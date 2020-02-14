@@ -1,0 +1,11 @@
+domain name: bopadomain
+
+package = bopadomain.bopapackage or  bopadomain.bopapackage.friendsfinder
+
+application ID: bopadomain.com.friendsfinder
+
+project id friendsfinder-264118
+
+
+flutter 
+bopadomain.fluttermodule

@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "863930478031",
+    "firebase_url": "https://friendsfinder-264118.firebaseio.com",
+    "project_id": "friendsfinder-264118",
+    "storage_bucket": "friendsfinder-264118.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863930478031:android:0f90030d08b82cac6e76ba",
+        "android_client_info": {
+          "package_name": "bopadomain.bopapackage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863930478031-7s5nqv1po23o128jmipogpfs3t9t60si.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmI4WA3v-0RPDfCnvulaxsk5TqJ3NPwpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863930478031-7s5nqv1po23o128jmipogpfs3t9t60si.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863930478031:android:a69635ea9257553e6e76ba",
+        "android_client_info": {
+          "package_name": "bopadomain.bopapackage.friendsfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863930478031-0br8iv05d48msdb5bfod9b598l12qu43.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bopadomain.bopapackage.friendsfinder",
+            "certificate_hash": "b2a9bce2cd339c6b5958eb459a34713e6cb53106"
+          }
+        },
+        {
+          "client_id": "863930478031-7s5nqv1po23o128jmipogpfs3t9t60si.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmI4WA3v-0RPDfCnvulaxsk5TqJ3NPwpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863930478031-7s5nqv1po23o128jmipogpfs3t9t60si.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

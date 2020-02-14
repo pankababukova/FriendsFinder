@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">FriendsFinder</string>
+    <string name="source">"Photo by ian dooley on Unsplash"</string>
+    <string name="source1">"Photo by emre ergen on Unsplash"</string>
+    <string name="signin_button">"SIGN IN"</string>
+    <string name="sign_in_email">"Enter e-mail: "</string>
+    <string name="sign_in_password">"Enter password: "</string>
+    <string name="register">"Register here"</string>
+    <string name="register_email">"Enter e-mail: "</string>
+    <string name="register_password">"Enter password: "</string>
+    <string name="confirm_password">"Confirm password"</string>
+    <string name="create_acc_button">"Create account"</string>
+    <string name="my_profile">My Account</string>
+    <string name="signout_button">"Sign out"</string>
+    <string name="facebook_application_id" translatable="false">476881533001942</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb476881533001942</string>
+    <string name="title_activity_maps">"Where are my friends?"</string>
+    <string name="my_chats_button">"MyChats"</string>
+    <string name="MyChatsHeader">"Chats"</string>
+    <string name="home_email">"Welcome!"</string>
+    <string name="edit_text_chat">" "</string>
+    <string name="send_msg_btn">"SEND"</string>
+    <string name="friends_list_title">"My Friends"</string>
+    <string name="go_to_map_button">"SHARE MY LOCATION"</string>
+    <string name="profile_picture">"image"</string>
+
+
+
+
+
+</resources>

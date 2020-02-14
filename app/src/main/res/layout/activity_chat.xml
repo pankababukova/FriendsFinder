@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+creating an activity with the RecyclerView (tool to repeat elements, sets of elements) and adding the library.
+The RecyclerView consists of a Model (our class "User"); View (sent and received msg layouts); and a Controller (our "MessagesAdapter")
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="bopadomain.bopapackage.friendsfinder.ChatActivity">
+
+    <TextView
+        android:id="@+id/MyChatsHeader"
+        android:layout_width="138dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/MyChatsHeader"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" /> <!-- the recycler view will take all the space except for the EditText and Button -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text_chat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Enter a message"
+            tools:text="@string/edit_text_chat" />
+
+        <Button
+            android:id="@+id/send_msg_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_msg_btn" />
+    </LinearLayout>
+</LinearLayout>

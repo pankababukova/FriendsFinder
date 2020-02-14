@@ -1,0 +1,92 @@
+1. Create a project, register in google cloud services and firebase
+2. Import dependencies:
+	.....
+	.....
+3. Authentication - AuthUI, log in over google account, facebook account, phone, email
+
+4.Realtime database - creating databse for users
+
+
+
+https://firebase.google.com/docs/database/ios/structure-data
+
+
+5. Chats
+
+- start a chat
+- add members to chat - which security rules we want: anyone can enter chat; user can send pending reuqests to 
+	join chats, only owners can add pending requests
+- join chats
+- leave chats
+
+https://firebase.googleblog.com/2016/10/group-security-in-firebase-database.html
+
+6. 
+
+7. Maps and location services
+
+8. General:
+- Back button
+
+
+
+App layout structure:
+
+- Authentication -> Map services -> Profile
+				 -> Chats - open and close chats with maps background
+				 -> Messaging
+
+
+
+Database structure:
+
+Realtime Database: JSON tree:
+we need to keep the structure as flat as possible
+
+{
+  // Chats contains only meta info about each conversation
+  // stored under the chats's unique ID
+  "chats": {
+    "one": {
+      "title": "Historical Tech Pioneers",
+      "lastMessage": "ghopper: Relay malfunction found. Cause: moth.",
+      "timestamp": 1459361875666
+    },
+    "two": { ... },
+    "three": { ... }
+  },
+
+  // Conversation members are easily accessible
+  // and stored by chat conversation ID
+  "members": {
+    // we'll talk about indices like this below
+    "one": {
+      "ghopper": true,
+      "alovelace": true,
+      "eclarke": true
+    },
+    "two": { ... },
+    "three": { ... }
+  },
+
+  // Messages are separate from data we may want to iterate quickly
+  // but still easily paginated and queried, and organized by chat
+  // conversation ID
+  "messages": {
+    "one": {
+      "m1": {
+        "name": "eclarke",
+        "message": "The relay seems to be malfunctioning.",
+        "timestamp": 1459361875337
+      },
+      "m2": { ... },
+      "m3": { ... }
+    },
+    "two": { ... },
+    "three": { ... }
+  }
+}
+
+(Source: https://firebase.google.com/docs/database/android/structure-data)
+
+
