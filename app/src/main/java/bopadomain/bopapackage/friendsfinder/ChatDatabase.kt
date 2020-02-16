@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 //class to create a local database with parameters: context, name of the file, no factory and 1 version of the DB
+//if user has not internet connection, the data will be stored locally
 
 class ChatDatabase(context: Context) : SQLiteOpenHelper(context, "chat.db", null, 1) {
     override fun onCreate(p0: SQLiteDatabase) {  //p0 var of type SQLiteDatabase executes the SQL statement

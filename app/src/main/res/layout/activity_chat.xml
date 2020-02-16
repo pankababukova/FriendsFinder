@@ -41,7 +41,8 @@ The RecyclerView consists of a Model (our class "User"); View (sent and received
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Enter a message"
+            android:hint="@string/hint_Enter_Message"
+            android:textColorHint="#3F51B5"
             tools:text="@string/edit_text_chat" />
 
         <Button

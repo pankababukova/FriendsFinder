@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
                     var intent = Intent(this, UserProfileActivity::class.java)
                     startActivity(intent)
-                    finish()
+                    finish() //user cannot go back to the previous activity
                 }
                 else
                     Toast.makeText(

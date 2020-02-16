@@ -26,32 +26,39 @@ class UserProfileActivity : AppCompatActivity() {
             var obj = Intent(applicationContext, MapsActivity::class.java)
             startActivity(obj)
         }
-
-        //creating var for the users and a list for the users
+    //in order to show the items in the list view, we need to create an adapter
+    //creating var for the users and a list for the users
         var dbUser = FirebaseDatabase.getInstance().reference //getting instance from the database
         var list = ArrayList<String>() //the list of the adapter
 
-        dbUser.child("users").addValueEventListener(object: ValueEventListener{  //object overwriting all the methods from valueEventListener
+        //object overwriting all the methods from valueEventListener
+        dbUser.child("users").addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                //retrieve the key from all database children (key = username) and add them to the list in the listview
+                //the variable p0 retrieves all data from the "users" realtime database
+                // retrieve the key from all database children (key = username) and add them to the list in the listview
                 for (i in p0.children)
                 {
                     if (i.key != UserInfo.me)  //doesnt add the user to the list of friends
                         list.add(i.key.toString())
                 }
 
-                //displaying the retrieved data
-                //var to display value in array adapter with parameter
+        //displaying the retrieved data
+        //var to display value in array adapter with parameter
+        //adp will be filled in the users list view (UserProfile Activity)
+        // android.R.layout.simple_list_item_1 = uses system resources
                 var adp = ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1, list)
-                //adp will be filled in the users list view
                 users_list.adapter = adp
 
-                //adding an event for itemClickListener for the users list view
-                users_list.setOnItemClickListener{ adapterView, view, i, l  ->
-                    UserInfo.friend = list[i]   //stores the username of the friend that has been clicked on
+        //adding an event for itemClickListener for the users list view
+        //when a user logged into the system clicks on any user in the list (list[u])
+        //then move the user and the selected user to the ChatActivity
+                users_list.setOnItemClickListener{ adapterView, view, u, l  ->
+                    //stores the username of the friend that has been clicked on
+                    //this list is the "simple_list_item_1"
+                    UserInfo.friend = list[u]
                     var obj = Intent(applicationContext, ChatActivity::class.java)// moving the user from the current activity to the chat activity
                     startActivity(obj)
                 }

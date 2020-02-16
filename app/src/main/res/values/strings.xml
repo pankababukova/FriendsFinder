@@ -23,6 +23,7 @@
     <string name="friends_list_title">"My Friends"</string>
     <string name="go_to_map_button">"SHARE MY LOCATION"</string>
     <string name="profile_picture">"image"</string>
+    <string name="hint_Enter_Message">"Enter a message"</string>
 
 
 

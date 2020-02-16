@@ -22,10 +22,13 @@ class RegisterActivity : AppCompatActivity() {
                     register_password.text.toString()).addOnCompleteListener{task ->
                     if (task.isSuccessful)
                     {
-                        //authomatically creating the username from the 1st character til the @
+    //REaltime Database
+    // authomatically creating the username from the 1st character til the @
                         UserInfo.me = register_email.text.toString().substring(0,
                             register_email.text.toString().indexOf(("@")))
-                        //adding the username to the realtime database and a default message hello
+
+    //adding user to the realtime database child "users" and a default message hello
+//!!!messages were appearing in the Chat Activity but no users were added to the Firebase DB
                         var dbUser = FirebaseDatabase.getInstance().reference
                         dbUser.child("users").child(UserInfo.me).setValue("Hello!")
 

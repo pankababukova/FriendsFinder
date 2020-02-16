@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+// Recycler view contains:
+// 1) View - the 2 layouts for the sent and received messages;
+// 2) Model - the class User with vars username and msg
+// 3) Controller - the class MessageAdapter, extending from the RecyclerView (the controller) class with <ViewHolder> as parameter.
 
-//creating a class "MessagesAdapter" for the controller
-//Class "MessagesAdapter", extending from the RecyclerView (the controller) class with <ViewHolder> as parameter.
-// All member functions are implemented in the class.
-//array of type User (the model)
+//the model is saved in a var list)
 class MessagesAdapter (var context: Context, var list: ArrayList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+// 4. a function to distinguish between the sender and receiver view holders
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == 1)
         {
             var v = LayoutInflater.from(context).inflate(R.layout.sent_msg_layout, parent, false)
@@ -25,13 +28,13 @@ class MessagesAdapter (var context: Context, var list: ArrayList<User>): Recycle
         }
     }
 
-    //the function retrieves how many rows will be returned in the viewer
+// 2. the function retrieves how many rows will be returned in the viewer, namely the length of the list
     override fun getItemCount(): Int {
         return list.size
     }
 
-    //a function to distinguish between the sent and receiver holder
-    //var position retrieves the number of rows
+// 3. a function to distinguish between the sent and receiver holder
+//var position retrieves the number of rows
 
     override fun getItemViewType(position: Int): Int {
         if (list[position].username=="me") //if i am the sender of the message
@@ -39,7 +42,9 @@ class MessagesAdapter (var context: Context, var list: ArrayList<User>): Recycle
         else
             return 2
     }
-
+//4. The parameter holder distinguishes between the holders
+    //if I anm the sender the viewholder shall display the SentHolder (sent msg)
+    //the fun is implemented in the Chat activity
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(list[position].username=="me") //if i am the sender, show as sent message
             (holder as SentHolder).show(list[position].msg)
@@ -47,10 +52,10 @@ class MessagesAdapter (var context: Context, var list: ArrayList<User>): Recycle
             (holder as ReceiverHolder).show(list[position].msg)
     }
 
-    //creating two view holders for each msg type with a var and a fun to show the msg
+//1. creating two view holders for the 2 message layouts with a var and a fun to show the msg
     public class SentHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        var textV = itemView.findViewById<TextView>(R.id.textview_msg) as TextView
+        var textV = itemView.findViewById<TextView>(R.id.textview_msg) as TextView //the var looks for an item of the type TextView with id textview_msg
         fun show(msg:String)
         {
             textV.text=msg
