@@ -32,4 +32,7 @@ At the moment the list of users appears in only one of the emulators, thus chat 
 Default messages send in the chat appear as "null" instead of "Hello!". 
 Screenshots to visualise the testing are available. 
 
+Maybe the error with the default message comes from the fact the both the SQLite database (ChatDatabase.kt) and the class User.kt 
+contain a var msg. Still testing. 
+
 The user is not notified when receiving a message, this function should be added in future.
