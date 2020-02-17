@@ -15,16 +15,16 @@ The table "chat.db" has two columns, a key and a value. The key is the username,
 
 The chat function is implemented in the ChatActivity via Recycler view. The Recycler view needs a viewer, a model and a controller.
 The viewer is created in two layouts - "received_msg_layout.xml" and "sent_msg_layout.xml".
-The model is the Class User.kt with vars username and msg.
+The model is the class User.kt with vars username and msg.
 The controller is coded in the class MessageAdapter.kt that contains the array of the class User. 
-This controller distinguishes between the sent and received messages and the users (if the user is "me" and all the rest).
+This controller distinguishes between the sent and received messages and the users (if the user is "me" or else).
 
 The ChatActivity.kt contains the array list of the User class (the model for the Recycler view), the message adapter, 
-an object to refer to the Realtime DB and an object of the local SQLite DB.
-The chat button sends data to the local SQLite and the realtime database.
+an object to refer to the Realtime DB and an object to refer to the local SQLite DB.
+The chat button Send sends data to the local SQLite and the realtime database.
 
 The maps activity enables sharing the user's location. 
-The coupon has expired on 10th FEb and this function cannot be tested at the moment.
+The coupon has expired on 10th Feb and this function cannot be tested at the moment.
 
 Run the app:
 The app should be run in two emulators simultaneously, two different users should be logged in each of the emulators.
@@ -32,4 +32,4 @@ At the moment the list of users appears in only one of the emulators, thus chat 
 Default messages send in the chat appear as "null" instead of "Hello!". 
 Screenshots to visualise the testing are available. 
 
-The second user is not notified when receiving a message, this function should be added in future.
+The user is not notified when receiving a message, this function should be added in future.
