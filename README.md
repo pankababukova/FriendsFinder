@@ -32,3 +32,4 @@ At the moment the list of users appears in only one of the emulators, thus chat 
 Default messages send in the chat appear as "null" instead of "Hello!". 
 Screenshots to visualise the testing are available. 
 
+The second user is not notified when receiving a message, this function should be added in future.
