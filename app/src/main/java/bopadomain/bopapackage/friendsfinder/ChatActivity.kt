@@ -24,18 +24,18 @@ class ChatActivity : AppCompatActivity() {
 
 //5. Relating the local SQLite Databse to the REaltime Database
 //5.1. defining an object to refer to the realtime database
-        var db_obj = FirebaseDatabase.getInstance().reference
+        var obj_rt_db = FirebaseDatabase.getInstance().reference
 
 //1. A variable for the model User
-        var list=ArrayList<User> () //data type of the model User
+        var list=ArrayList<User>() //data type of the model User
         //first we create a test database then replace it with the real Chat Database:
         //list.add(User("me", "Hello!"))
         //list.add(User("bojan", "Hi there!"))
 
 //3. defining an object of the local DB (SQLite) to fill in the list
-        var obj = ChatDatabase(this)
-        var db = obj.writableDatabase //the var is writing data in the DB
-        var cur = db.rawQuery("select * from chat", null) //retrieve all data from the chat and store in the cur var (Cursor)
+        var obj_sqlite = ChatDatabase(this)
+        var obj_write_sqlite = obj_sqlite.writableDatabase //the var is writing data in the DB
+        var cur = obj_write_sqlite.rawQuery("select * from chat", null) //retrieve all data from the chat and store in the cur var (Cursor)
         cur.moveToFirst() //makes the pointer of the cursor in the first row, to open the chat database
         while(cur.isAfterLast==false)
         {
@@ -46,8 +46,8 @@ class ChatActivity : AppCompatActivity() {
 
 //2. Variable for the MessageAdapter
         //creating an object for the messageAdapter and pass it as this
-        var adp= MessagesAdapter(this, list) //the adapter object provides access to the date items
-        chat_recyclerView.adapter=adp    // creating a relationship with the RecyclerView
+        var msg_adp= MessagesAdapter(this, list) //the adapter object provides access to the date items
+        chat_recyclerView.adapter=msg_adp    // creating a relationship with the RecyclerView
         chat_recyclerView.layoutManager=LinearLayoutManager(this)
         chat_recyclerView.scrollToPosition(list.size-1) // always display the chat from the last message, not the first one
 
@@ -55,18 +55,18 @@ class ChatActivity : AppCompatActivity() {
         send_msg_btn.setOnClickListener{
             //two unknown variables from the SQLite to be added to the DB
             //arrayOf passes the value to the unknown variable, passes the text entered in the editText viewer
-            db.execSQL("insert into chat values (?, ?)",arrayOf("me", edit_text_chat.text.toString()))
-            list.add(User("me", edit_text_chat.text.toString())) //the values of the Model USer will be passed also to the list
+            obj_write_sqlite.execSQL("insert into chat values (?, ?)",arrayOf("me", edit_text_chat.text.toString()))
+            list.add(User("me", edit_text_chat.text.toString())) //the values of the Model USer will be passed to the list too
 
 //5.2. sending a msg to the user, that has been selected from the UserProfile Activity, from the users list view
 //the list is related to the SQLite databse "users"
-            db_obj.child("users").child(UserInfo.friend).setValue(edit_text_chat.text.toString())
-            adp.notifyDataSetChanged() //to restart the Adapter after the user clicks the Send button
+            obj_rt_db.child("users").child(UserInfo.friend).setValue(edit_text_chat.text.toString())
+            msg_adp.notifyDataSetChanged() //to restart the Adapter after the user clicks the Send button
             edit_text_chat.setText("") //to remove the text from the editor after clicking the send button
             chat_recyclerView.scrollToPosition(list.size-1) //always display the chat from the last message, not the first one
         }
-//5.3. read the msg received from the other user
-        db_obj.child("users").child(UserInfo.me).addValueEventListener( //defining an object of the VAlueEventListener and implement the methods
+//5.3. receiving a message
+        obj_rt_db.child("users").child(UserInfo.me).addValueEventListener( //defining an object of the VAlueEventListener and implement the methods
             object : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
                 }
@@ -77,11 +77,11 @@ class ChatActivity : AppCompatActivity() {
     // adding the data from the database into the chat activity
     // copying the call to receive data (msg) from the database by using UserInfo.friend
     // msg gets the value of p0 = msg comes from the upper user (UserInfo.me)
-    //every msg coming from theuser will be added to sqlite table + arrayList User + Adapter will be notified
-                    db.execSQL("insert into chat values (?, ?)",
+    //every msg coming from the user will be added to sqlite table + arrayList User + Adapter will be notified
+                    obj_write_sqlite.execSQL("insert into chat values (?, ?)",
                         arrayOf(UserInfo.friend, p0.getValue().toString())) //getting the value from the p0
                     list.add(User(UserInfo.friend, p0.getValue().toString())) //the values will be passed also to the User list
-                    adp.notifyDataSetChanged() //to restart the Adapter after the user clicks the Send button
+                    msg_adp.notifyDataSetChanged() //to restart the Adapter after the user clicks the Send button
                     chat_recyclerView.scrollToPosition(list.size-1) //always display the chat from the last message, not the first one
                 }
             }
