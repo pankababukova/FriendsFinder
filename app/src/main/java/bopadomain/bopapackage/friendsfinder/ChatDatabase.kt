@@ -12,6 +12,9 @@ class ChatDatabase(context: Context) : SQLiteOpenHelper(context, "chat.db", null
         p0.execSQL("create table chat(user text, msg text)") //table of the DB "chat"
         p0.execSQL("insert into chat values ('me', 'Hello')") /* insert rows of the table */
         p0.execSQL("insert into chat values ('Bojan', 'Hi')")
+        
+//the chat activity shows those 2 msgs and then updates only the sent msgs. default received messages "null" are received after every sent msg
+// as only one emulator activates the chat, so only one user can send msgs.
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
